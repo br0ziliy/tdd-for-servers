@@ -19,7 +19,7 @@ describe "#{hostname}" do
     end # file/docroot
     describe file("#{docroot}/index.html") do
         it { should be_file }
-        its(:content) { should match /Hello, I'm a happy web application!/ }
+        its(:content) { should match /Hello, I'm a happy webapp02!/ }
     end
 
 end # hostname

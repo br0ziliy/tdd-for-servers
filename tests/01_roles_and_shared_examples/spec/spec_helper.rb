@@ -3,6 +3,9 @@ require 'net/ssh'
 
 set :backend, :ssh
 
+base_spec_dir = Pathname.new(File.join(File.dirname(__FILE__)))
+Dir[base_spec_dir.join('shared/**/*.rb')].sort.each{ |f| require f }
+
 if ENV['ASK_SUDO_PASSWORD']
   begin
     require 'highline/import'
@@ -18,7 +21,7 @@ host = ENV['TARGET_HOST']
 
 options = Net::SSH::Config.for(host)
 
-options[:user] ||= Etc.getlogin
+options[:user] ||= 'root' # Etc.getlogin
 
 set :host,        options[:host_name] || host
 set :ssh_options, options
