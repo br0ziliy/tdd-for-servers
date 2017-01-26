@@ -1,0 +1,39 @@
+require 'rake'
+require 'rspec/core/rake_task'
+require 'yaml'
+
+task :spec    => 'spec:all'
+
+namespace :spec do
+  all_tasks = []
+  roles = []
+  Dir.glob('./spec/*').each do |dir|
+      next unless File.directory?(dir)
+      role = File.basename(dir)
+      next if role == "shared"
+      role = "_#{role}" if role == "default"
+      roles << role
+  end
+  roles.each do |role|
+    hosts = []
+    Dir.glob("./spec/#{role}/*_spec.rb").each do |file|
+        next if File.directory?(file)
+        host = File.basename(file).split("_")[0]
+        hosts << host
+    end
+    hosts.each do |host|
+        task_name = "#{role}:#{host}"
+        desc "Serverspec #{role} role for #{host}"
+        RSpec::Core::RakeTask.new(task_name) do |t|
+          ENV['TARGET_HOST'] = host
+          t.pattern = "spec/{base,#{role}}/#{host}_spec.rb"
+          t.verbose = false
+          t.rspec_opts = "--format documentation --format html --out ./reports/#{role}/#{host}.html --format json --out ./reports/#{role}/#{host}.json"
+          puts ">>> " + host
+        end # RSpec::Core::RakeTask.new()
+        all_tasks << task_name
+    end # hosts.each
+  end # roles.each
+  desc "Run all tasks"
+  task :all => all_tasks.map{|t| "spec:" + t}
+end # namespace

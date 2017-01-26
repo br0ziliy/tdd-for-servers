@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+if ENV['LIBVIRT_STORAGE_POOL']
+    lv_storage_pool = ENV['LIBVIRT_STORAGE_POOL']
+    puts "Using #{lv_storage_pool} LibVirt storage pool."
+else
+    puts "LIBVIRT_STORAGE_POOL not set, using 'default' LibVirt storage pool"
+    lv_storage_pool = "default"
+end
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "fedora-24"
+  config.vm.box_check_update = false
+  config.vm.network "private_network", type: "dhcp"
+  config.hostmanager.manage_host = true
+  config.hostmanager.enabled = false
+  config.ssh.insert_key = false
+
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.define "demo" do |node|
+      node.vm.hostname = "demo.example.local"
+  end
+
+  config.vm.provision :hostmanager
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "playbooks/site.yml"
+    ansible.inventory_path = "inventory/hosts.vagrant"
+    ansible.limit = "all"
+    ansible.raw_arguments = ["-D"]
+    ansible.extra_vars = { ansible_user: 'root', ansible_ssh_password: 'vagrant' }
+    ansible.verbose = true
+    ansible.force_remote_user = false
+  end
+
+  config.vm.provider :libvirt do |lv|
+      lv.storage_pool_name = lv_storage_pool
+  end
+end
