@@ -6,6 +6,7 @@
   with_items:
   - httpd
   - mod_ssl
+  - libselinux-python
 
 - name: Make sure correct index.html
   template:
@@ -13,8 +14,10 @@
     dest: /var/www/html/index.html
     mode: 0644
     group: nobody
+    owner: nobody
 
 - name: Make sure httpd running
   service:
     name: httpd
     state: started
+    enabled: yes

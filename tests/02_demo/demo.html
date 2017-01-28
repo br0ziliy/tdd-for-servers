@@ -283,90 +283,61 @@ a {
   <dl style="margin-left: 0px;">
   <dt id="example_group_1" class="passed">Package &quot;httpd&quot;</dt>
     <script type="text/javascript">moveProgressBar('9.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be installed</span><span class='duration'>0.34589s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should be installed</span><span class='duration'>0.30355s</span></dd>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_2" class="passed">Package &quot;mod_ssl&quot;</dt>
     <script type="text/javascript">moveProgressBar('18.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be installed</span><span class='duration'>0.02258s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should be installed</span><span class='duration'>0.02487s</span></dd>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_3" class="passed">Package &quot;libselinux-python&quot;</dt>
     <script type="text/javascript">moveProgressBar('27.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be installed</span><span class='duration'>0.02201s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should be installed</span><span class='duration'>0.02522s</span></dd>
   </dl>
 </div>
 <div id="div_group_4" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_4" class="passed">Service &quot;httpd&quot;</dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_4');</script>
-    <script type="text/javascript">makeRed('example_group_4');</script>
     <script type="text/javascript">moveProgressBar('36.3');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">should be enabled</span>
-      <span class="duration">0.02778s</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>expected Service &quot;httpd&quot; to be enabled</pre></div>
-        <div class="backtrace"><pre>./spec/demo/httpd_spec.rb:12:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">10</span>
-<span class="linenum">11</span>describe service(<span class="string"><span class="delimiter">'</span><span class="content">httpd</span><span class="delimiter">'</span></span>) <span class="keyword">do</span>
-<span class="offending"><span class="linenum">12</span>  it { should be_enabled }</span>
-<span class="linenum">13</span>  it { should be_running }
-<span class="linenum">14</span><span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">should be enabled</span><span class='duration'>0.02791s</span></dd>
     <script type="text/javascript">moveProgressBar('45.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be running</span><span class='duration'>0.02027s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should be running</span><span class='duration'>0.02059s</span></dd>
   </dl>
 </div>
 <div id="div_group_5" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_5" class="passed">File &quot;/var/www/html/index.html&quot;</dt>
     <script type="text/javascript">moveProgressBar('54.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be file</span><span class='duration'>0.01853s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should be file</span><span class='duration'>0.02105s</span></dd>
     <script type="text/javascript">moveProgressBar('63.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be mode 644</span><span class='duration'>0.01992s</span></dd>
-    <script type="text/javascript">makeRed('div_group_5');</script>
-    <script type="text/javascript">makeRed('example_group_5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should be mode 644</span><span class='duration'>0.02004s</span></dd>
     <script type="text/javascript">moveProgressBar('72.7');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">should be owned by &quot;nobody&quot;</span>
-      <span class="duration">0.01874s</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>expected `File &quot;/var/www/html/index.html&quot;.owned_by?(&quot;nobody&quot;)` to return true, got false</pre></div>
-        <div class="backtrace"><pre>./spec/demo/httpd_spec.rb:19:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">17</span>  it { should be_file }
-<span class="linenum">18</span>  it { should be_mode <span class="integer">644</span> }
-<span class="offending"><span class="linenum">19</span>  it { should be_owned_by <span class="string"><span class="delimiter">'</span><span class="content">nobody</span><span class="delimiter">'</span></span> }</span>
-<span class="linenum">20</span>  it { should be_grouped_into <span class="string"><span class="delimiter">'</span><span class="content">nobody</span><span class="delimiter">'</span></span> }
-<span class="linenum">21</span>  its(<span class="symbol">:content</span>) { should match <span class="regexp"><span class="delimiter">/</span><span class="content">Hello, I'm a happy webapp!</span><span class="delimiter">/</span></span> }</code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">should be owned by &quot;nobody&quot;</span><span class='duration'>0.02175s</span></dd>
     <script type="text/javascript">moveProgressBar('81.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be grouped into &quot;nobody&quot;</span><span class='duration'>0.02358s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should be grouped into &quot;nobody&quot;</span><span class='duration'>0.01980s</span></dd>
   </dl>
 </div>
 <div id="div_group_6" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_6" class="passed">content</dt>
     <script type="text/javascript">moveProgressBar('90.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">should match /Hello, I&#39;m a happy webapp!/</span><span class='duration'>0.02000s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should match /Hello, I&#39;m a happy webapp!/</span><span class='duration'>0.02198s</span></dd>
   </dl>
 </div>
 <div id="div_group_7" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_7" class="passed">Port &quot;80&quot;</dt>
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should be listening</span><span class='duration'>0.02034s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should be listening</span><span class='duration'>0.01978s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.57692 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "11 examples, 2 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.53059 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "11 examples, 0 failures";</script>
 </div>
 </div>
 </body>
